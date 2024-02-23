@@ -28,13 +28,17 @@ export default function AddModvie({setMovies, movies}) {
     const [description, setDescription] = useState("");
     const [posterURL, setPosterURL] = useState("");
     const [rating, setRating] = useState(0);
+    const [trailer, setTrailer] = useState("");
+
 
     const AddMovieFunction = () => {
-      setMovies([...movies,{
+      setMovies([...movies,
+        {
         title: title,
         description: description,
         posterURL: posterURL,
         rating: rating,
+        trailer: trailer ,
       }])
       handleClose()
     }
@@ -55,6 +59,7 @@ export default function AddModvie({setMovies, movies}) {
                     <TextField label="title" variant="outlined" fullWidth onChange={(e) => {setTitle(e.target.value)}} />
                     <TextField label="description" variant="outlined" fullWidth onChange={(e) => {setDescription(e.target.value)}}/>
                     <TextField label="posterURL" variant="outlined" fullWidth onChange={(e) => {setPosterURL(e.target.value)}}/>
+                    <TextField label="Embed trailer" variant="outlined" fullWidth onChange={(e) => {setTrailer(e.target.value)}}/>
                     <Rating
                         name="simple-controlled"
                         value={rating}

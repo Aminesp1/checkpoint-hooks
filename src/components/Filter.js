@@ -8,7 +8,8 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import { Rating } from '@mui/material';
+import { Button, Rating } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -52,7 +53,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function Filter({setFilterTitle, setFilterRating, filterRating}) {
+export default function Filter({ setFilterTitle, setFilterRating, filterRating, admin }) {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -74,6 +75,9 @@ export default function Filter({setFilterTitle, setFilterRating, filterRating}) 
                     >
                         MUI
                     </Typography>
+                    {admin && <Link to ="/Profile">
+                    <Button variant="contained">Profile</Button>
+                    </Link>}
                     <Rating
                         name="simple-controlled"
                         value={filterRating}

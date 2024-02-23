@@ -1,8 +1,10 @@
 import React from 'react'
 import { MovieCard } from './MovieCard'
 import AddModvie from './AddMovie'
+import { Link } from 'react-router-dom'
 
-export const MovieList = ({ movies, setMovies, filterTitle , filterRating}) => {
+
+export const MovieList = ({ movies, setMovies, filterTitle, filterRating }) => {
   return (
     <div>
       <div>
@@ -11,13 +13,17 @@ export const MovieList = ({ movies, setMovies, filterTitle , filterRating}) => {
       <div className='movielist'>
         {movies
           .filter(movie =>
-            movie.title.toLowerCase().includes(filterTitle.toLowerCase()) &&
-           movie.rating >= filterRating
-            )
+            movie.title
+              .toLowerCase().includes(filterTitle.toLowerCase()) &&
+            movie.rating >= filterRating
+          )
           .map(movie => {
-            return <MovieCard movie={movie} key={Math.random()} />
+            return <Link to={movie.title}>
+              <MovieCard movie={movie} key={Math.random()} />
+            </Link>
           })}
       </div>
-    </div>
+     </div>
   )
-}
+        }
+
